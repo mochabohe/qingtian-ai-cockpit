@@ -4,8 +4,6 @@
 
 预设 profile（按需扩展）：
   - deepseek    : DeepSeek 官方 /v1/chat/completions
-  - openai      : OpenAI 官方 /v1/chat/completions
-  - custom      : 跟随 .env 里 LLM_PROVIDER / LLM_BASE_URL / LLM_API_KEY / LLM_MODEL / LLM_API_TYPE
 
 切换流程：
   1. 前端调 POST /system/llm-model {profile: "deepseek"}
@@ -51,26 +49,6 @@ def _build_profiles() -> Dict[str, "LLMProfile"]:
             api_key=_env("LLM_API_KEY"),
             model="deepseek-chat",
             api_type="chat_completions",
-        ),
-        "openai": LLMProfile(
-            id="openai",
-            label="openai-gpt-4o",
-            description="OpenAI 官方 /v1/chat/completions",
-            provider="openai",
-            base_url="https://api.openai.com/v1",
-            api_key=_env("OPENAI_API_KEY") or _env("LLM_API_KEY"),
-            model=_env("OPENAI_MODEL", "gpt-4o"),
-            api_type="chat_completions",
-        ),
-        "custom": LLMProfile(
-            id="custom",
-            label="custom",
-            description="跟随 .env 配置（LLM_PROVIDER / LLM_BASE_URL / LLM_API_KEY / LLM_MODEL / LLM_API_TYPE）",
-            provider=_env("LLM_PROVIDER", "custom"),
-            base_url=_env("LLM_BASE_URL"),
-            api_key=_env("LLM_API_KEY"),
-            model=_env("LLM_MODEL", "deepseek-chat"),
-            api_type=_env("LLM_API_TYPE", "chat_completions"),
         ),
     }
 
