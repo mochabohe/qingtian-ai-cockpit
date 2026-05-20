@@ -1,0 +1,19 @@
+{
+  "name": "dongfeng-ai-contest",
+  "private": true,
+  "scripts": {
+    "postinstall": "powershell -ExecutionPolicy Bypass -File scripts/setup-venv.ps1",
+    "setup:venv": "powershell -ExecutionPolicy Bypass -File scripts/setup-venv.ps1",
+    "predev": "powershell -ExecutionPolicy Bypass -File scripts/kill-port-8000.ps1",
+    "dev": "concurrently --kill-others-on-fail --restart-tries 5 --restart-after 2000 -n backend,frontend -c green,blue \".venv\\Scripts\\python.exe backend\\run.py\" \"pnpm --dir frontend dev\"",
+    "dev:backend": ".venv\\Scripts\\python.exe backend\\run.py",
+    "dev:frontend": "pnpm --dir frontend dev",
+    "kill:backend": "powershell -ExecutionPolicy Bypass -File scripts/kill-port-8000.ps1",
+    "build": "pnpm --dir frontend build",
+    "record:intro-video": "node scripts/record_intro_video.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "playwright": "^1.49.1"
+  }
+}

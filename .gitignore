@@ -1,0 +1,62 @@
+node_modules
+
+# 环境变量 / 密钥（含真实 API Key，绝对不进 git）
+.env
+.env.local
+.env.*.local
+backend/.env
+
+# Python 字节码 / 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# IDE / 编辑器配置
+.vscode/
+.idea/
+.claude/
+
+# 简报运行产物（每次跑都生成新文件，不进 git）
+data/reports/*
+
+# Demo / 模拟数据集（一键生成,可随时重建）
+data/sample_*.csv
+data/*.csv
+
+# 主线数据集原始文件（不进 git，需要使用者自行放置到 data/datasets/raw/）
+data/datasets/raw/
+
+# 业务视频任务产物（每次合成生成新目录,可重建,不进 git）
+data/videos/
+
+# 自动生成的组件类型声明（unplugin-vue-components 启动时自动生成，按需重建）
+frontend/components.d.ts
+
+# Playwright 临时验收产物
+.playwright-mcp/
+stage-*.png
+
+# 项目根的临时验收截图
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+
+# 临时模式标记
+.tmp_mode.json
+
+# Office 打开 pptx/docx 时生成的临时锁文件
+~$*
+
+# 前端开发服务器临时日志
+frontend-dev.log
+
+# 媒体二进制产物（如本地生成）
+*.mp4
+*.webm
+*.m4a
+*.srt
+*.ass
